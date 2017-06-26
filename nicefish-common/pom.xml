@@ -14,12 +14,20 @@
     <packaging>jar</packaging>
     <name>nicefish-common</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.nicefish</groupId>
+            <artifactId>nicefish-config</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>1.3.6-SNAPSHOT</version>
                 <configuration>
                     <configurationFile>${basedir}/src/main/resources/generatorConfig.xml</configurationFile> 
                     <verbose>true</verbose>

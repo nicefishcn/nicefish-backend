@@ -5,8 +5,8 @@
     <context id="context" targetRuntime="MyBatis3">
 
         <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
-           <!-- enable annotations -->
-           <property name="builder" value="true"/>
+           <property name="builder" value="false"/>
+           <property name="noArgsConstructor" value="true"/>
            <property name="allArgsConstructor" value="false"/>
        </plugin>
 
@@ -22,7 +22,7 @@
             targetProject="../nicefish-model/src/main/java" />
         <sqlMapGenerator targetPackage="com.nicefish.mapper"
             targetProject="../nicefish-dao/src/main/resources" />
-        <javaClientGenerator targetPackage="com.nicefish.mapper"
+        <javaClientGenerator targetPackage="com.nicefish.gen"
             targetProject="../nicefish-dao/src/main/java" type="XMLMAPPER" />
 
         <table schema="CL_DEMO" tableName="comment" 
