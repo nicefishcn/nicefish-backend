@@ -1,8 +1,11 @@
-#nicefish-backend
+# nicefish-backend
 nicefish-backend is the backend system for nicefish framework.
 
-## architecture
+[![Build Status](https://travis-ci.org/nicefishcn/nicefish-backend.svg?branch=master)](https://travis-ci.org/nicefishcn/nicefish-backend)
+[![Codecov](https://codecov.io/gh/nicefishcn/nicefish-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/nicefishcn/nicefish-backend/branch/master)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html
 
+## architecture=
 1. j2ee
 2. mysql
 3. rest
