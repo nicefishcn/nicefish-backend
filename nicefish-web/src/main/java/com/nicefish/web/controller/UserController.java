@@ -19,23 +19,34 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    /*@RequestMapping("/login")
-    public User login(@RequestParam String userName,@RequestParam String password) {
-        return userService.findByUserNameAndPassword(userName,password);
-    }*/
     @ApiOperation(value = "login", nickname = "login",response = User.class)
     @ApiResponses({
             @ApiResponse(code = 404, response = String.class, message = "user not found"),
             @ApiResponse(code = 500, response = String.class, message = "Internal server error")
     })
-    @RequestMapping(path="/id/{id}",method = RequestMethod.GET)
-    public User login(@PathVariable("id") String userId) {
+    @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST})
+    public User login(@RequestParam String userName,@RequestParam String password) {
+        return userService.findByUserNameAndPassword(userName,password);
+    }
+
+    @ApiOperation(value = "find", nickname = "find",response = User.class)
+    @ApiResponses({
+            @ApiResponse(code = 404, response = String.class, message = "user not found"),
+            @ApiResponse(code = 500, response = String.class, message = "Internal server error")
+    })
+    @RequestMapping(path="/find/{id}",method = RequestMethod.GET)
+    public User find(@PathVariable("id") String userId) {
         return userService.findByUserId(userId);
     }
 
-    /*@RequestMapping("/register")
+    @ApiOperation(value = "register", nickname = "register",response = User.class)
+    @ApiResponses({
+            @ApiResponse(code = 404, response = String.class, message = "user not found"),
+            @ApiResponse(code = 500, response = String.class, message = "Internal server error")
+    })
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
     public User register(@RequestBody User user) {
         user.setUserId(java.util.UUID.randomUUID().toString());
         return userService.save(user);
-    }*/
+    }
 }
