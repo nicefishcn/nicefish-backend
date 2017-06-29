@@ -88,7 +88,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/user/register", "anon");
         filterChainDefinitionMap.put("/post/**","anon");
         filterChainDefinitionMap.put("/", "anon");
-        filterChainDefinitionMap.put("/**","acf");
+        filterChainDefinitionMap.put("/**","restPerms"); // 缺filter
 
         /*
          shiroFilterFactoryBean.setLoginUrl("/admin/login");
