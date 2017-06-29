@@ -243,11 +243,18 @@
   </update>
 
 
-    <select id="findByUserNameAndPassword" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from user
-        where USER_NAME = #{userName,jdbcType=VARCHAR} and  PASSWORD = #{password,jdbcType=VARCHAR}
-    </select>
+  <select id="findByUserNameAndPassword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where USER_NAME = #{userName,jdbcType=VARCHAR} and  PASSWORD = #{password,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findByUserName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where USER_NAME = #{userName,jdbcType=VARCHAR}
+  </select>
 
 </mapper>

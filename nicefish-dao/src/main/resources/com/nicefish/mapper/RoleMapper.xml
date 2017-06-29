@@ -111,4 +111,10 @@
       TYPE = #{type,jdbcType=INTEGER}
     where ROLE_ID = #{roleId,jdbcType=VARCHAR}
   </update>
+
+  <select id="findRoleNamesForUserName" resultType="String">
+    select r.role_name from role r, user u, user_role ur
+    where u.user_name=#{userName} and u.user_id = ur.user_id and ur.role_id = r.role_id
+  </select>
+
 </mapper>

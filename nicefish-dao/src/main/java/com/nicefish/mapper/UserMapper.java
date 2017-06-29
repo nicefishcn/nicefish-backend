@@ -13,4 +13,6 @@ public interface UserMapper extends com.nicefish.gen.UserMapper{
 
    User findByUserNameAndPassword(@Param("userName")String userName,@Param("password")String password);
 
+   User findByUserName(@Param("userName")String userName);
+
 }

@@ -30,6 +30,7 @@
         <module>nicefish-model</module>
         <module>nicefish-dao</module>
         <module>nicefish-service</module>
+        <module>nicefish-shiro</module>
         <module>nicefish-tooling</module>
         <module>nicefish-message</module>
         <module>nicefish-swagger</module>
