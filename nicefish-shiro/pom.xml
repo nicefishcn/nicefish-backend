@@ -20,6 +20,12 @@
             <artifactId>nicefish-service</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.nicefish</groupId>
+            <artifactId>nicefish-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
 
