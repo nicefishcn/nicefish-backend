@@ -1,5 +1,6 @@
 package com.nicefish.mapper;
 
+import com.nicefish.gen.PermissionMapperGen;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +12,7 @@ import java.util.Set;
  */
 
 @Mapper
-public interface PermissionMapper extends com.nicefish.gen.PermissionMapper{
+public interface PermissionMapper extends PermissionMapperGen {
 
     Set<String> findPermissions(@Param("rolesNames")List<String> roleNames);
 

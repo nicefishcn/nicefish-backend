@@ -104,8 +104,7 @@
   <select id="findPermissions" resultType="String">
     select DISTINCT p.PERMISSION_CODE from permission p,role r,role_permission rp
     where r.role_id = rp.role_id and rp.permission_id = p.permission_id and r.role_name in
-    <foreach collection="list" item="role" index="index"
-             open="(" close=")" separator=",">
+    <foreach close=")" collection="list" index="index" item="role" open="(" separator=",">
       #{role}
     </foreach>
 

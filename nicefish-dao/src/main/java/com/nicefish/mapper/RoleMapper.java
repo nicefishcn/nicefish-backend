@@ -1,10 +1,9 @@
 package com.nicefish.mapper;
 
-import com.nicefish.model.User;
+import com.nicefish.gen.RoleMapperGen;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Set;
  */
 
 @Mapper
-public interface RoleMapper extends com.nicefish.gen.RoleMapper{
+public interface RoleMapper extends RoleMapperGen {
 
    Set<String> findRoleNamesForUserName(@Param("userName")String userName);
 

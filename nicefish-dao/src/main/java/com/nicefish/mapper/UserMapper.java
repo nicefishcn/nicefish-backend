@@ -1,5 +1,6 @@
 package com.nicefish.mapper;
 
+import com.nicefish.gen.UserMapperGen;
 import com.nicefish.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -9,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
  */
 
 @Mapper
-public interface UserMapper extends com.nicefish.gen.UserMapper{
+public interface UserMapper extends UserMapperGen {
 
    User findByUserNameAndPassword(@Param("userName")String userName,@Param("password")String password);
 
