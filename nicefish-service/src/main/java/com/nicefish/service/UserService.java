@@ -12,5 +12,5 @@ public interface UserService {
 
     public User findByUserId(String userId);
 
-    public User findByUserNameAndPassword(String userName,String password);
+    public User findByUserName(String userName);
 }

@@ -58,7 +58,7 @@ public class RestPermissionsAuthorizationFilter extends AuthorizationFilter {
         String url="";
         Session session = subject.getSession(true);
         if(request instanceof HttpServletRequest){
-            url= ((HttpServletRequest)request).getPathInfo();
+            url= ((HttpServletRequest)request).getRequestURI();
         }
 		// If the subject isn't identified, redirect to login URL
 		if (subject.getPrincipal() == null||session.getAttribute("_USERINFO")==null) {
@@ -86,11 +86,12 @@ public class RestPermissionsAuthorizationFilter extends AuthorizationFilter {
 	protected String[] buildPermissions(ServletRequest request) {
 		String[] resources = new String[1];
 		HttpServletRequest req = (HttpServletRequest) request;
-		String path = req.getPathInfo();
+		String path = req.getRequestURI();
 		if (path == null)
 			return null;
 		String[] tmp = path.split("/");
 		resources[0] = SimpleServicePermissionResource.SERVICE_PREFIX + ((tmp.length > 2) ? (tmp[1] + "." + tmp[2]) : (tmp[1] + ".list"));
+		System.out.println("  ========>  buildPerm: " + resources[0]);
 		return resources;
 	}
 

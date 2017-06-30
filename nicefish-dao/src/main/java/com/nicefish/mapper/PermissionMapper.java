@@ -14,6 +14,6 @@ import java.util.Set;
 @Mapper
 public interface PermissionMapper extends PermissionMapperGen {
 
-    Set<String> findPermissions(@Param("rolesNames")List<String> roleNames);
+    Set<String> findPermissions(@Param("list")List<String> roleNames);
 
 }

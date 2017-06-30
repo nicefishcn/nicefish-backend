@@ -5,8 +5,13 @@ import com.nicefish.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by kimmking on 17/6/26.
@@ -25,8 +30,15 @@ public class UserController {
             @ApiResponse(code = 500, response = String.class, message = "Internal server error")
     })
     @RequestMapping(value = "/login",method = {RequestMethod.GET,RequestMethod.POST})
-    public User login(@RequestParam String userName,@RequestParam String password) {
-        return userService.findByUserNameAndPassword(userName,password);
+    public User login(@RequestParam String userName,@RequestParam String password,HttpSession session) {
+
+        UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+        Subject subject = SecurityUtils.getSubject();
+        subject.login(token);
+
+        User user = userService.findByUserName(userName);
+        session.setAttribute("_USERINFO",user);
+        return user;
     }
 
     @ApiOperation(value = "find", nickname = "find",response = User.class)

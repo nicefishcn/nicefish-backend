@@ -1,9 +1,6 @@
 package com.nicefish.shiro.realm.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.apache.shiro.authc.AccountException;
 import org.apache.shiro.authc.AuthenticationException;
@@ -107,20 +104,21 @@ public class ServiceRealm extends AuthorizingRealm {
         String username = (String) getAvailablePrincipal(principals);
 
         Set<String> roleNames = null;
-        Set<String> permissions = null;
+        Set<String> permissions = new HashSet<String>();
         List<String> roles = new ArrayList<String>();
         try {
             // Retrieve roles and permissions from service
             roleNames = authenticationService.findRoleNamesForUserName(username);
             roles.addAll(roleNames);
-            permissions = authenticationService.findPermissions(username, roles);
+            if(roles.size() > 0){
+                permissions = authenticationService.findPermissions(username, roles);
+            }
         } catch (Exception e) {
             final String message = "There was an error while authorizing user [" + username + "]";
             if (log.isErrorEnabled()) {
                 log.error(message, e);
             }
             throw new AuthorizationException(message, e);
-        } finally {
         }
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roleNames);

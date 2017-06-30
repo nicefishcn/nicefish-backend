@@ -34,11 +34,11 @@ public class SimplePermission implements Permission {
 	 */
 	@Override
 	public boolean implies(Permission p) {
-        SimplePermission simplePermission = (SimplePermission) p;
-        if (simplePermission == null | StringUtils.isEmpty(simplePermission.getPerm())) {
+        SimplePermission sp = (SimplePermission) p;
+        if (sp == null | StringUtils.isEmpty(sp.getPerm())) {
             return true;
         }
-        if(this.getPerm().equals(simplePermission.getPerm().replace(".","/"))){
+        if(this.getPerm().equals(sp.getPerm()) || this.getPerm().equals(sp.getPerm().replace(".","/"))){
             return true;
         }
         return false;
