@@ -6,6 +6,8 @@ import com.nicefish.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by kimmking on 17/6/26.
  */
@@ -29,5 +31,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUserName(String userName) {
         return userMapper.findByUserName(userName);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userMapper.findAll();
     }
 }

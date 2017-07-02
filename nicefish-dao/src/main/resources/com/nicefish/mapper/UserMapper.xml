@@ -257,4 +257,10 @@
     where USER_NAME = #{userName,jdbcType=VARCHAR}
   </select>
 
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+  </select>
+
 </mapper>

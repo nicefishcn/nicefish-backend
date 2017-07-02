@@ -5,6 +5,8 @@ import com.nicefish.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * Created by kimmking on 17/6/26.
  */
@@ -16,4 +18,5 @@ public interface UserMapper extends UserMapperGen {
 
    User findByUserName(@Param("userName")String userName);
 
+    List<User> findAll();
 }

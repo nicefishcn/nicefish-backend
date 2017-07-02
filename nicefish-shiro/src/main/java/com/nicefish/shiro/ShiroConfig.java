@@ -1,6 +1,5 @@
 package com.nicefish.shiro;
 
-
 import com.nicefish.shiro.realm.service.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -19,13 +18,10 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
 @Configuration
 public class ShiroConfig {
 
     private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
-
-
 
     @Bean(name = "lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
@@ -39,18 +35,13 @@ public class ShiroConfig {
         return daap;
     }
 
-
-
-
-
-
-    @Bean(name="authenticationService")
-    public AuthenticationService getSimpleAuthenticationService(){
+    @Bean(name = "authenticationService")
+    public AuthenticationService getSimpleAuthenticationService() {
         return new AuthenticationServiceImpl();
     }
 
     @Bean(name = "serviceRealm")
-    public ServiceRealm getShiroRealm(@Qualifier("credentialsMatcher") CredentialsMatcher matcher,@Autowired AuthenticationService authenticationService) {
+    public ServiceRealm getShiroRealm(@Qualifier("credentialsMatcher") CredentialsMatcher matcher, @Autowired AuthenticationService authenticationService) {
         ServiceRealm serviceRealm = new ServiceRealm();
         serviceRealm.setCredentialsMatcher(matcher);
         serviceRealm.setAuthenticationService(authenticationService);
@@ -65,14 +56,15 @@ public class ShiroConfig {
 //        return em;
 //    }
 
-    @Bean(name="credentialsMatcher")
-    public HashedCredentialsMatcher getCredentialsMatcher(){
+    @Bean(name = "credentialsMatcher")
+    public HashedCredentialsMatcher getCredentialsMatcher() {
         HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
         matcher.setHashAlgorithmName("sha-512");
         matcher.setHashIterations(1024);
         matcher.setStoredCredentialsHexEncoded(true);
         return matcher;
     }
+
     @Bean(name = "securityManager")
     public DefaultWebSecurityManager getDefaultWebSecurityManager(@Qualifier("serviceRealm") ServiceRealm shiroRealm) {
         DefaultWebSecurityManager dwsm = new DefaultWebSecurityManager();
@@ -80,29 +72,21 @@ public class ShiroConfig {
         //dwsm.setCacheManager(getEhCacheManager());
         return dwsm;
     }
+
     @Bean
-    public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(@Qualifier("securityManager")DefaultWebSecurityManager dwsm) {
+    public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor(@Qualifier("securityManager") DefaultWebSecurityManager dwsm) {
         AuthorizationAttributeSourceAdvisor aasa = new AuthorizationAttributeSourceAdvisor();
         aasa.setSecurityManager(dwsm);
         return new AuthorizationAttributeSourceAdvisor();
     }
 
-
-
-
-
-
-
-    @Bean(name="restPerms")
-    public RestPermissionsAuthorizationFilter getRestPerms(){
+    @Bean(name = "restPerms")
+    public RestPermissionsAuthorizationFilter getRestPerms() {
         return new RestPermissionsAuthorizationFilter();
     }
 
-
-
     @Bean(name = "shiroFilter")
-    public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager")DefaultWebSecurityManager dwsm) {
-
+    public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager dwsm) {
 
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(dwsm);
@@ -110,7 +94,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/user/login", "anon");
         filterChainDefinitionMap.put("/user/find/*", "restPerms");
         filterChainDefinitionMap.put("/user/register", "anon");
-        filterChainDefinitionMap.put("/post/**","anon");
+        filterChainDefinitionMap.put("/post/**", "anon");
         filterChainDefinitionMap.put("/", "anon");
         //filterChainDefinitionMap.put("/**","restPerms"); // 缺filter
 
@@ -129,8 +113,9 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
+
     @Bean
-    public FilterRegistrationBean delegatingFilterProxy(){
+    public FilterRegistrationBean delegatingFilterProxy() {
         FilterRegistrationBean filterRegistration = new FilterRegistrationBean();
         filterRegistration.setFilter(new DelegatingFilterProxy("shiroFilter"));
         //  该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理
@@ -139,8 +124,5 @@ public class ShiroConfig {
         filterRegistration.addUrlPatterns("/*");// 可以自己灵活的定义很多，避免一些根本不需要被Shiro处理的请求被包含进来
         return filterRegistration;
     }
-
-
-
 
 }
