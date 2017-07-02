@@ -91,9 +91,8 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(dwsm);
 
-        filterChainDefinitionMap.put("/user/login", "anon");
-        filterChainDefinitionMap.put("/user/find/*", "restPerms");
-        filterChainDefinitionMap.put("/user/register", "anon");
+        filterChainDefinitionMap.put("/auth/**", "anon");
+        filterChainDefinitionMap.put("/user/**", "restPerms");
         filterChainDefinitionMap.put("/post/**", "anon");
         filterChainDefinitionMap.put("/", "anon");
         //filterChainDefinitionMap.put("/**","restPerms"); // 缺filter
