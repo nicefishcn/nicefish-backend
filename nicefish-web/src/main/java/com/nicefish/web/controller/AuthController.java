@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @Api("权限验证接口")
-@RequestMapping("/user")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired

@@ -74,7 +74,7 @@ CREATE TABLE `permission` (
 
 LOCK TABLES `permission` WRITE;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
-INSERT INTO `permission` VALUES ('e884dfa8-5d5b-11e7-907b-a6006ad3dba0','user.find','user.find'),('e884dfa8-5d5b-11e7-907b-a6006ad3dba1','user.edit','user.edit'),('e884dfa8-5d5b-11e7-907b-a6006ad3dba2','user.add','user.add');
+INSERT INTO `permission` VALUES ('e884dfa8-5d5b-11e7-907b-a6006ad3dba0','user.find','user.find'),('e884dfa8-5d5b-11e7-907b-a6006ad3dba1','user.list','user.list'),('e884dfa8-5d5b-11e7-907b-a6006ad3dba2','user.add','user.add'),('e884dfa8-5d5b-11e7-907b-a6006ad3dba3','user.edit','user.edit'),('e884dfa8-5d5b-11e7-907b-a6006ad3dba4','user.del','user.del');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,4 +297,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-30 14:53:43
+-- Dump completed on 2017-07-02 12:33:42
