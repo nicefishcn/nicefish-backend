@@ -22,18 +22,27 @@ import static springfox.documentation.builders.PathSelectors.regex;
  */
 @EnableSwagger2
 @Configuration
-public class SpringfoxConfig {
-
+public class SwaggerConfig {
 
     @Bean
-    public Docket swaggerSpringMvcPlugin() {
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(regex("/.*"))
                 .build()
                 .pathMapping("/")
-                .apiInfo(metadata());
+                .apiInfo(apiInfo());
+    }
+
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("Nicefish API")
+                .description("Nicefish bootstrap rest api")
+                .version("v1.0")
+                .contact("317484255@qq.com,kimmking@163.com")
+                .termsOfServiceUrl("https://git.oschina.net/nicefish/nicefish-backend")
+                .build();
     }
 
 
@@ -49,18 +58,9 @@ public class SpringfoxConfig {
                 .apiInfo(metadata());
     }
 
-    *//*@Bean
+    @Bean
     public UiConfiguration uiConfig() {
         return UiConfiguration.DEFAULT;
-    }*//*
+    }*/
 
-    */
-    private ApiInfo metadata() {
-        return new ApiInfoBuilder()
-                .title("nicefish API")
-                .description("Some description")
-                .version("1.0")
-                .contact("317484255@qq.com")
-                .build();
-    }
 }
