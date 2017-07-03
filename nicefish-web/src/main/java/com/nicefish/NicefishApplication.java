@@ -26,7 +26,7 @@ public class NicefishApplication {
 
     @RequestMapping("/")
     public String greeting() {
-        return "Hello World,kimmking!";
+        return "{\n\t\t \"greeting\":\"Hello World,kimmking!\"\n}";
     }
 
     public static void main(String[] args) {
