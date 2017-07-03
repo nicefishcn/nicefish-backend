@@ -27,7 +27,7 @@ nicefish-backend is the backend system for nicefish framework.
 ### tool
 1. maven ![](https://img.shields.io/badge/maven-done-green.svg?style=plastic)
 2. mybatis-generator ![](https://img.shields.io/badge/generator-done-green.svg?style=plastic)
-3. SwaggerUI ![](https://img.shields.io/badge/swagger-done-green.svg?style=plastic)
+3. Swagger-Bootstrap-UI ![](https://img.shields.io/badge/swagger-done-green.svg?style=plastic)
 4. tomcat/jetty ![](https://img.shields.io/badge/tomcat-done-green.svg?style=plastic)
 5. mysql ![](https://img.shields.io/badge/mysql-done-green.svg?style=plastic)
 6. script tools for Linux/Mac/Windows ![](https://img.shields.io/badge/Tools-done-green.svg?style=plastic)
@@ -69,7 +69,7 @@ In webbrowser, use this url:
 - http://localhost:8080/user/list
 
 2. you can access SwaggerUI and test rest api:
-- http://localhost:8080/swagger-ui.html
+- http://localhost:8080/doc.html
 
 On console:
 ```
