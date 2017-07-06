@@ -1,5 +1,7 @@
+[TOC]
+
 # nicefish-backend
-nicefish-backend is the backend system for nicefish framework.
+nicefish-backend is a rapid development framework for business backend system. 
 
 [![Build Status](https://travis-ci.org/nicefishcn/nicefish-backend.svg?branch=master)](https://travis-ci.org/nicefishcn/nicefish-backend)
 [![Codecov](https://codecov.io/gh/nicefishcn/nicefish-backend/branch/master/graph/badge.svg)](https://codecov.io/gh/nicefishcn/nicefish-backend/branch/master)
@@ -47,18 +49,15 @@ git clone https://github.com/nicefishcn/nicefish-backend
 build it:
 
 ```
-mvn package
-```
-or
-```
-mvn install
+mvn package #or mvn install
 ```
 
 ### start nicefish application
-1. start your mysql server, and execute sql/nicefish.sql
+1. start your mysql server, and execute docs/sql/nicefish.sql
 2. then run project use:
+
 ```
-sh run.sh # in Windows, just use: run.bat
+sh run.sh #on Windows, just use: run.bat
 ```
 
 ### access demo
@@ -71,21 +70,23 @@ In webbrowser, use this url:
 2. you can access SwaggerUI and test rest api:
 - http://localhost:8080/doc.html
 
+3. screenshot
+
 On console:
 ```
 $ curl -c cookie.txt "http://localhost:8080/auth/login?userName=kimmking&password=123456"
-{"userId":"ca11816f-8480-469f-b33e-c705bb7d29ae","userName":"kimmking","password":"398a8c9d73da4c0e7f320952b06decdefcc97586305b0d51b1093ae95d8dc476ca63cc22ce64bbc344ad55b52d035cba5f3f2c21801afd561412f665bbcb5c45","email":"kimmking@163.com","realName":null,"nickName":null,"qq":null,"weixin":null,"cellPhone":null,"userDesc":null,"upId":null,"status":null,"regTime":1498461050000,"lastloginTime":null,"ename":null}bogon:nicefish-backend kimmking$
+{"userId":"ca11816f-8480-469f-b33e-c705bb7d29ae","userName":"kimmking","password":"...","email":"kimmking@163.com","realName":null,"nickName":null,"qq":null,"weixin":null,"cellPhone":null,"userDesc":null,"upId":null,"status":null,"regTime":1498461050000,"lastloginTime":null,"ename":null}bogon:nicefish-backend kimmking$
 
 $ curl -b cookie.txt http://localhost:8080/user/list
-[{"userId":"ca11816f-8480-469f-b33e-c705bb7d29ae","userName":"kimmking","password":"398a8c9d73da4c0e7f320952b06decdefcc97586305b0d51b1093ae95d8dc476ca63cc22ce64bbc344ad55b52d035cba5f3f2c21801afd561412f665bbcb5c45","email":"kimmking@163.com","realName":null,"nickName":null,"qq":null,"weixin":null,"cellPhone":null,"userDesc":null,"upId":null,"status":null,"regTime":1498461050000,"lastloginTime":null,"ename":null}]bogon:nicefish-backend kimmking$
+[{"userId":"ca11816f-8480-469f-b33e-c705bb7d29ae","userName":"kimmking","password":"...","email":"kimmking@163.com","realName":null,"nickName":null,"qq":null,"weixin":null,"cellPhone":null,"userDesc":null,"upId":null,"status":null,"regTime":1498461050000,"lastloginTime":null,"ename":null}]bogon:nicefish-backend kimmking$
 
 ```
 
 ## development
 if you want to regenerate all mybatis models and mappers, execute in console:
 ```
-sh env.sh # in Windows, just use: env.bat
-sh gen.sh # in Windows, just use: gen.bat
+sh env.sh #on Windows, just use: env.bat
+sh gen.sh #on Windows, just use: gen.bat
 ```
 
 - env.sh/env.bat to prepare required plugins in this project.
