@@ -71,6 +71,9 @@ In webbrowser, use this url:
 - http://localhost:8080/doc.html
 
 3. screenshot
+![](https://git.oschina.net/nicefish/nicefish-backend/raw/master/docs/screenshot/swagger01.jpg)
+![](https://git.oschina.net/nicefish/nicefish-backend/raw/master/docs/screenshot/swagger02.jpg)
+![](https://git.oschina.net/nicefish/nicefish-backend/raw/master/docs/screenshot/swagger03.jpg)
 
 On console:
 ```
